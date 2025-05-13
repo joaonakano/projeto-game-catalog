@@ -4,25 +4,32 @@ use Illuminate\Support\Facades\Route;
 
 // Rotas do projeto
 
-// GET
+// Rotas Simples
 Route::get("/");
 Route::get("/login");
-Route::get("/register");
-Route::get("/games");
-Route::get("/games/register");
-Route::get("/games/{id}");
 Route::get("/user");
-Route::get("/users/{id}");
 Route::get("/dashboard");
 
-// PUT
-Route::put("/games/{uuid}");
-Route::put("/users/{uuid}");
+// Rota de Registro de Usuario
+Route::prefix('/register')->group(function() {
+    Route::get("/");
+    Route::post("/");
+});
 
-// DELETE
-Route::delete("/games/{uuid}");
-Route::delete("/users/{uuid}");
+// Rota Games
+Route::prefix('/games')->group(function() {
+    Route::get("/");
+    Route::get("/register");
+    Route::get("/{uuid}")->whereUuid('uuid');
+    
+    Route::put("/{uuid}")->whereUuid('uuid');
+    Route::delete("/{uuid}")->whereUuid('uuid');
+    Route::post("/register");
+});
 
-// CREATE
-Route::post("/register");
-Route::post("/games/register");
+// Rota Users
+Route::prefix('users')->group(function() {
+    Route::get("/{uuid}")->whereUuid('uuid');
+    Route::put("/{uuid}")->whereUuid('uuid');
+    Route::delete("/{uuid}")->whereUuid('uuid');
+});
