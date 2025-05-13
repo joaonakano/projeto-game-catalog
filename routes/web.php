@@ -1,35 +1,20 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Rotas do projeto
-
-// Rotas Simples
-Route::get("/");
-Route::get("/login");
-Route::get("/user");
-Route::get("/dashboard");
-
-// Rota de Registro de Usuario
-Route::prefix('/register')->group(function() {
-    Route::get("/");
-    Route::post("/");
+Route::get('/', function () {
+    return view('welcome');
 });
 
-// Rota Games
-Route::prefix('/games')->group(function() {
-    Route::get("/");
-    Route::get("/register");
-    Route::get("/{uuid}")->whereUuid('uuid');
-    
-    Route::put("/{uuid}")->whereUuid('uuid');
-    Route::delete("/{uuid}")->whereUuid('uuid');
-    Route::post("/register");
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Rota Users
-Route::prefix('users')->group(function() {
-    Route::get("/{uuid}")->whereUuid('uuid');
-    Route::put("/{uuid}")->whereUuid('uuid');
-    Route::delete("/{uuid}")->whereUuid('uuid');
-});
+require __DIR__.'/auth.php';
