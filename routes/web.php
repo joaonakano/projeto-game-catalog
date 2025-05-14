@@ -17,4 +17,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Rota Games
+Route::prefix('/games')->group(function() {
+    Route::get("/");
+    Route::get("/register");
+    Route::get("/{uuid}")->whereUuid('uuid');
+    Route::put("/{uuid}")->whereUuid('uuid');
+    Route::delete("/{uuid}")->whereUuid('uuid');
+    Route::post("/register");
+});
+
 require __DIR__.'/auth.php';
