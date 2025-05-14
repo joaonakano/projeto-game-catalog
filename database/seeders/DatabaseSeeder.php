@@ -2,22 +2,53 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        DB::table('genres')->insert([
+            'genre' => 'Western'
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        DB::table('genres')->insert([
+            'genre' => 'Shooter'
+        ]);
+
+        DB::table('genres')->insert([
+            'genre' => 'Puzzle'
+        ]);
+
+        DB::table('games')->insert([
+            'uuid' => uuid_create(),
+            'name' => 'Green Alive Redemption',
+            'description' => 'A shooter game.',
+            'release_date' => '2022-12-04',
+            'developer' => 'Rockstar Rio',
+            'publisher' => 'Rockstar North America',
+            'genre_id' => 1,
+        ]);
+
+        DB::table('games')->insert([
+            'uuid' => uuid_create(),
+            'name' => 'Yellow Half-Dead Redemption',
+            'description' => 'A shooter game.',
+            'release_date' => '2022-12-04',
+            'developer' => 'Rockstar India',
+            'publisher' => 'Rockstar North America',
+            'genre_id' => 2,
+        ]);
+
+        DB::table('games')->insert([
+            'uuid' => uuid_create(),
+            'name' => 'Red Dead Redemption',
+            'description' => 'A shooter game.',
+            'release_date' => '2022-12-04',
+            'developer' => 'Rockstar Yemen',
+            'publisher' => 'Rockstar North America',
+            'genre_id' => 3,
         ]);
     }
 }
