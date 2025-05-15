@@ -11,24 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create('genres', function (Blueprint $table) {
-            //$table->integer('id')->unsigned();
-            $table->primary('id');
-            $table->increments('id');
-            $table->string('genre');
-        });
-        
         Schema::create('games', function (Blueprint $table) {
-            $table->uuid('uuid');
+            $table->uuid('uuid')->primary();
             $table->string('name');
             $table->string('description');
             $table->date('release_date');
             $table->string('developer');
             $table->string('publisher');
-            $table->integer('genre_id')->unsigned();
-            $table->index('genre_id');
-            $table->foreign('genre_id')->references(columns: 'id')->on('genres');
+            // Talvez depois...
+            // $table->integer('genre_id')->unsigned();
+            // $table->index('genre_id');
+            // $table->foreign('genre_id')->references(columns: 'id')->on('genres');
             $table->timestamps();
         });
     }
@@ -39,6 +32,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('games');
-        Schema::dropIfExists('genres');
     }
 };
