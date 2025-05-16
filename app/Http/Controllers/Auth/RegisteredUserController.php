@@ -31,15 +31,38 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'picture' => ['file', 'mimes:jpg,png,gif', 'max:10240']
         ]);
 
+        $path = null;
+
+        // Se tiver arquivo 'picture', salva direto em public/pictures
+        if ($request->hasFile('picture')) {
+            // Cria a pasta caso não exista
+            if (!file_exists(public_path('pictures'))) {
+                mkdir(public_path('pictures'), 0755, true);
+            }
+
+            $file = $request->file('picture');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('pictures'), $filename);
+
+            $path = 'pictures/' . $filename;
+        }
+
+        // Cria o usuário já com o caminho da imagem, se existir
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'picture' => $path,
         ]);
+
+        event(new Registered($user));
+        Auth::login($user);
+
 
         event(new Registered($user));
 
