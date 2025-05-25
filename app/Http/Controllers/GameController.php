@@ -7,59 +7,56 @@ use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $games = Game::all();
+        return view('games.index', compact('games'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('games.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        //dd("Dados chegaram, antes da validação");
+        $request->validate([
+            "name" => "required",
+            "description" => "required|max:250",
+            "release_date" => "required",
+            "developer" => "required|max:50",
+            "publisher" => "required|max:50"
+        ]);
+
+        $gameData = [
+            "uuid" => uuid_create(),
+            "name" => $request->name,
+            "description" => $request->description,
+            "release_date" => $request->release_date,
+            "developer" => $request->developer,
+            "publisher" => $request->publisher,
+        ];
+
+        Game::create( $gameData);
+        
+        return redirect()->route('games.index')->with('status',  __("Game Successfully Created"));
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Game $game)
     {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Game $game)
     {
-        //
+        return view('games.edit', compact("game"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Game $game)
     {
-        //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Game $game)
     {
-        //
     }
 }
