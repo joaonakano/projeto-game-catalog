@@ -20,13 +20,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 // Rota Games
-Route::prefix('/games')->group(function() {
+Route::middleware('auth')->prefix('/games')->group(function() {
     Route::get("/", [GameController::class, 'index'])->name('games.index');
     Route::get("/register", [GameController::class, 'create'])->name('games.register');
     Route::get("/{game}/edit", [GameController::class, 'edit'])->name('games.edit');
-    Route::put("/{game}")->whereUuid('uuid');
-    Route::delete("/{game}")->whereUuid('uuid');
+    Route::put("/{game}", [GameController::class, 'update'])->name('games.update');
+
+    Route::get("/{game}", [GameController::class, 'show'])->name('games.show');
+    
+    Route::delete("/{game}", [GameController::class, 'destroy'])->name('games.destroy');
     Route::post("/register", [GameController::class, 'store'])->name('games.store');
 });
 

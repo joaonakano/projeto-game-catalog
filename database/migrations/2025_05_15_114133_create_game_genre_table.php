@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('game_genre', function (Blueprint $table) {
@@ -16,17 +13,18 @@ return new class extends Migration
             $table->primary('game_genre_id');
             
             $table->uuid('game_id');
-            $table->foreign('game_id')->references('uuid')->on('games');
+            $table->foreign('game_id')
+                  ->references('uuid')
+                  ->on('games')
+                  ->onDelete('cascade');
 
             $table->integer('genre_id')->unsigned();
-            $table->foreign('genre_id')->references('id')->on('genres');
-            //$table->timestamps();
+            $table->foreign('genre_id')
+                  ->references('id')
+                  ->on('genres');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('game_genre');

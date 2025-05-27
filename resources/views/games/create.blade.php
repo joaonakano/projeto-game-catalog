@@ -5,34 +5,42 @@
         </h2>
     </x-slot>
 
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <form action="{{ route("games.store") }}" method="POST">
         @csrf
 
         <div>
             <label for="">{{ __("Insert Game") }}:</label>
-            <input type="text" name="name" placeholder="{{ __("Game") }}">
+            <input type="text" name="name" placeholder="{{ __("Game") }}" required>
         </div>
 
         <div>
             <label for="">{{ __("Insert Game Description") }}:</label>
-            <input type="text" name="description" placeholder="{{ __("Description") }}">
+            <input type="text" name="description" placeholder="{{ __("Description") }}" required>
         </div>
 
         <div>
             <label for="">{{ __("Insert Game Launch Date") }}:</label>
-            <input type="date" name="release_date">
+            <input type="date" name="release_date" required>
         </div>
 
         <div>
             <label for="">{{ __("Insert Game Developer") }}:</label>
-            <input type="text" name="developer" placeholder="{{ __("Game Developer") }}">
+            <input type="text" name="developer" placeholder="{{ __("Game Developer") }}" required>
         </div>
 
         <div>
             <label for="">{{ __("Insert Game Publisher") }}:</label>
-            <input type="text" name="publisher" placeholder="{{ __("Game Publisher") }}">
+            <input type="text" name="publisher" placeholder="{{ __("Game Publisher") }}" required>
         </div>
 
-        <button type="submit" style="background-color: salmon; padding: 1rem; border-radius: 1em;">Cadastrar</button>
+        <button type="submit" style="background-color: salmon; padding: 1rem; border-radius: 1em;">{{__("Register")}}</button>
     </form>
 </x-app-layout>

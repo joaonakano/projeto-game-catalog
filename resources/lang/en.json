@@ -1,8 +1,45 @@
 {
-    "Password": "SkibidiPass",
-    "Delete Account": "Yeet my Account",
+    "Password": "Senha",
+    "Delete Account": "Zerar conta",
     "Cancel": "Nah, I'd win",
-    "Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.": "Once it’s gone, it’s gone. Drop your skibidipass to confirm you’re not playing.",
-    "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "Once it’s gone, it’s gone. Drop your skibidipass to confirm you’re not playing.",
-    "Are you sure you want to delete your account?": "You deadass wanna yeet it?"
+    "Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.": "Uma vez deletada a conta, todos os seus recursos e dados serão deletados permanentemente. Por gentileza, insira sua senha para confirmar que deseja realmente excluir a sua conta.",
+    "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "Uma vez deletada a conta, todos os seus recursos e dados serão deletados permanentemente. Antes de prosseguir, faça backup de qualquer dado ou informação que considera importante.",
+    "Are you sure you want to delete your account?": "Você tem certeza que quer apagar sua conta?",
+    
+    "Name is required": "Título é obrigatório",
+    "Name has max 250 characters": "Título requer no máximo 250 caracteres",
+    "Name has invalid characters": "Título tem caracteres inválidos (não acompanhados por letras ou números)",
+    "Name exists": "Título já registrado",
+    "Description is required": "Descrição é obrigatória",
+    "Description has max 200 characters": "Descrição requer no máximo 200 caracteres",
+    "Description has invalid characters": "Descrição tem caracteres inválidos (não acompanhados por letras ou números)",
+    "Release date is required": "Data de lançamento é obrigatória",
+    "Date is not valid": "Data é inválida",
+    "Developer is required": "Desenvolvedora é obrigatória",
+    "Developer has max 50 characters": "Desenvolvedora requer no máximo 50 caracteres",
+    "Developer has invalid characters": "Desenvolvedora tem caracteres inválidos (não acompanhados por letras ou números)",
+    "Publisher is required": "Distribuidora é obrigatória",
+    "Publisher has max 50 characters": "Distribuidora requer no máximo 50 caracteres",
+    "Publisher has invalid characters": "Distribuidora tem caracteres inválidos (não acompanhados por letras ou números)",
+
+    "Game Successfully Created": "Jogo registrado com sucesso!",
+    "Game Successfully Deleted": "Jogo removido com sucesso!",
+    "The update has been sent successfully": "Registro atualizado com sucesso!",
+
+    "Game": "Jogo",
+    "Album": "Vitrine",
+    "Submit Idea": "Registrar Jogo",
+
+    "Insert Game": "Insira o Título",
+    "Insert Game Description": "Insira a Descrição",
+    "Insert Game Launch Date": "Insira a Data de Lançamento",
+    "Insert Game Developer": "Insira a Desenvolvedora",
+    "Insert Game Publisher": "Insira a Distribuidora",
+    "Register": "Cadastrar",
+
+    "Update": "Atualizar",
+
+    "Profile": "Perfil",
+    "Log Out": "Sair"
+
 }
