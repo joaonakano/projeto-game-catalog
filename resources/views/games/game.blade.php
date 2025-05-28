@@ -1,14 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    {{ __("Game") }}
+            {{ __("Game") }}
         </h2>
     </x-slot>
 
-    <h1 style="font-size: 20px;"><strong>{{ $game->name }}</strong></h1>
-    <p>{{ $game->description }}</p>
-    <p>{{ $game->release_date}}</p>
-    <p>{{ $game->developer }}</p>
-    <p>{{ $game->publisher }}</p>
+    <div class="flex justify-center mb-6">
+        <img src="{{ asset('storage/' . $game->game_picture) }}" alt="{{ $game->name }}" class="max-w-xs max-h-72 rounded-lg shadow-md">
+    </div>
+
+    <h1 class="text-xl font-bold mb-4"><strong>{{ $game->name }}</strong></h1>
     
+    <p class="mb-2">{{ $game->description }}</p>
+    <p class="mb-2">{{ $game->release_date }}</p>
+    <p class="mb-2">{{ $game->developer }}</p>
+    <p class="mb-2">{{ $game->publisher }}</p>
 </x-app-layout>

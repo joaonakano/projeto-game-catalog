@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('release_date');
             $table->string('developer');
             $table->string('publisher');
+            $table->string('game_picture')->nullable();
             // Talvez depois...
             // $table->integer('genre_id')->unsigned();
             // $table->index('genre_id');

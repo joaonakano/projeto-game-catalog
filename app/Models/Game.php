@@ -18,7 +18,8 @@ class Game extends Model
         'description',
         'release_date',
         'developer',
-        'publisher'
+        'publisher',
+        'game_picture',
     ];
     
     // Altera a coluna de busca padrão do Laravel de "id" para "uuid". Resolve problemas de consulta por objeto
