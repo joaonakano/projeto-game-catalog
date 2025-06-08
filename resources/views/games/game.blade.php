@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="flex justify-center mb-6">
-        <img src="{{ asset('storage/' . $game->game_picture) }}" alt="{{ $game->name }}" class="max-w-xs max-h-72 rounded-lg shadow-md">
+    <img src="{{ asset($game->game_picture) }}" alt="{{ $game->name }}" class="w-full max-h-96 object-contain">
     </div>
 
     <h1 class="text-xl font-bold mb-4"><strong>{{ $game->name }}</strong></h1>

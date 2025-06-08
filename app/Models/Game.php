@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Game extends Model
 {
+    use HasFactory;
     // Codigo sinistro que muda a coluna padrao de id para uuid,
     // alem de forçar o laravel a não converter o id para incrementável (se remover, dor de cabeça garantida, rs)
     protected $primaryKey = 'uuid';

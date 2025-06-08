@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="flex justify-center mb-4">
-                    <img src="{{ asset('storage/' . $game->game_picture) }}" alt="{{ $game->name }}" class="max-w-xs max-h-72 rounded-lg shadow">
+                <img src="{{ asset($game->game_picture) }}" alt="{{ $game->name }}" class="w-32 h-32 object-cover">
                 </div>
 
                 <h1 class="text-lg font-semibold mb-1"><strong>Jogo:</strong> {{ $game->name }}</h1>
