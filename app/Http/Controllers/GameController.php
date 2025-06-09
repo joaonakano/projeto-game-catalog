@@ -22,6 +22,7 @@ class GameController extends Controller
 
             "release_date.required" => __('Release date is required'),
             "release_date.date" => __('Date is not valid'),
+            "release_date.after" => __('Date is far too early'),
 
             "developer.required" => __('Developer is required'),
             "developer.regex" => __('Developer has invalid characters'),
@@ -49,7 +50,7 @@ class GameController extends Controller
         return [
             "name" => $nameRule,
             "description" => "required|max:250|regex:/[A-Za-z0-9]/",
-            "release_date" => "required|date",
+            "release_date" => "required|date|after:1900-01-01",
             "developer" => "required|max:50|regex:/[A-Za-z0-9]/",
             "publisher" => "required|max:50|regex:/[A-Za-z0-9]/",
             "game_picture" => "required|file|mimes:jpg,png,jpeg|max:10240"

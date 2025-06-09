@@ -15,6 +15,7 @@
     "Description has invalid characters": "Descrição tem caracteres inválidos (não acompanhados por letras ou números)",
     "Release date is required": "Data de lançamento é obrigatória",
     "Date is not valid": "Data é inválida",
+    "Date is far too early": "Data informada é muito anterior ao prazo esperado",
     "Developer is required": "Desenvolvedora é obrigatória",
     "Developer has max 50 characters": "Desenvolvedora requer no máximo 50 caracteres",
     "Developer has invalid characters": "Desenvolvedora tem caracteres inválidos (não acompanhados por letras ou números)",
