@@ -38,9 +38,9 @@ class RegisteredUserController extends Controller
 
         $path = null;
 
-        // Se tiver arquivo 'picture', salva direto em public/pictures
+        //se tiver arquivo 'picture', vai salva direto em public/pictures
         if ($request->hasFile('picture')) {
-            // Cria a pasta caso não exista
+            //Cria a pasta caso ela não exista
             if (!file_exists(public_path('pictures'))) {
                 mkdir(public_path('pictures'), 0755, true);
             }
@@ -52,7 +52,6 @@ class RegisteredUserController extends Controller
             $path = 'pictures/' . $filename;
         }
 
-        // Cria o usuário já com o caminho da imagem, se existir
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

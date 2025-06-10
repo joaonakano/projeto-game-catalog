@@ -38,7 +38,7 @@ class EmailVerificationTest extends TestCase
 
         Event::assertDispatched(Verified::class);
         $this->assertTrue($user->fresh()->hasVerifiedEmail());
-        $response->assertRedirect(route('dashboard', absolute: false) . '?verified=1');
+        $response->assertRedirect(route('games.index', absolute: false) . '?verified=1');
     }
 
     public function test_email_nao_e_verificado_com_hash_invalido(): void
