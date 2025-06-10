@@ -35,10 +35,7 @@
                                class="block w-full text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700 transition">
                         <p class="mt-1 text-sm text-gray-400">Formatos: JPG, PNG, GIF (Max: 5MB)</p>
                     </div>
-                    <div class="flex-shrink-0">
-                        <img src="{{ asset('storage/' . $game->game_picture) }}" alt="{{ $game->name }}" 
-                             class="w-40 h-40 object-cover rounded-lg border-2 border-gray-600 shadow-lg">
-                    </div>
+                    
                 </div>
             </div>
 
