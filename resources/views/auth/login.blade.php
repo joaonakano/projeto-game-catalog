@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <div class="min-h-screen flex items-center justify-center bg-gray-900 p-4">
-        <div class="w-full max-w-xs bg-gray-800 p-6 rounded-xl shadow-2xl border border-gray-700">
+    <div class="flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="w-full max-w-lg bg-gray-800 p-10 rounded-xl shadow-2xl border border-gray-700">
             <div class="text-center mb-4">
                 <x-application-logo class="mx-auto h-10 w-auto text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600" />
                 <h2 class="mt-2 text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">

@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="min-h-screen flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-center bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8 bg-gray-800 p-10 rounded-xl shadow-2xl border border-gray-700">
             <div class="text-center">
                 <x-application-logo class="mx-auto h-16 w-auto text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600" />
