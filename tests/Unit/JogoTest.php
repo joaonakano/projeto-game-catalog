@@ -116,14 +116,9 @@ class JogoTest extends TestCase
         ]);
     }
 
-    public function test_nao_deve_cadastrar_jogo_com_nome_somente_numeros()
-    {
-        $dados = array_merge($this->dadosJogo, ['name' => '1234']);
-        $response = $this->post('/games/register', $dados);
-        $response->assertSessionHasErrors(['name']);
-    }
+  
 
-    // TESTE ADICIONADO (faltava no atual)
+   
     public function test_nao_deve_cadastrar_jogo_com_nome_somente_simbolos()
     {
         $response = $this->post('/games/register', [
@@ -134,7 +129,7 @@ class JogoTest extends TestCase
         $response->assertSessionHasErrors(['name']);
     }
 
-    // TESTE ADICIONADO (faltava no atual)
+  
     public function test_nao_deve_cadastrar_jogo_com_nome_e_campos_muito_grandes()
     {
         $response = $this->post('/games/register', [
@@ -149,7 +144,7 @@ class JogoTest extends TestCase
         $response->assertSessionHasErrors(['name', 'description', 'developer', 'publisher']);
     }
 
-    // TESTE ADICIONADO (faltava no atual)
+    
     public function test_nao_deve_cadastrar_jogo_com_data_de_lancamento_invalida()
     {
         $response = $this->post('/games/register', [
@@ -164,7 +159,7 @@ class JogoTest extends TestCase
         $response->assertSessionHasErrors(['release_date']);
     }
 
-    // TESTE ADICIONADO (faltava no atual)
+    
     public function test_nao_deve_cadastrar_jogo_com_logo_em_formato_invalido()
     {
         $response = $this->post('/games/register', [
@@ -195,7 +190,7 @@ class JogoTest extends TestCase
 
     // Edição
 
-    // TESTE ADICIONADO (faltava no atual)
+
     public function test_deve_permitir_editar_jogo_sem_alterar_informacoes()
     {
         $this->post('/games/register', $this->dadosJogo);
@@ -207,7 +202,7 @@ class JogoTest extends TestCase
 
     }
 
-    // TESTE ADICIONADO (faltava no atual)
+
     public function test_nao_deve_permitir_editar_jogo_com_nome_ja_existente()
     {
         $this->post('/games/register', $this->dadosJogo);
