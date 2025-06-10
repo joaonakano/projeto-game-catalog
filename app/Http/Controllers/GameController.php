@@ -40,22 +40,22 @@ class GameController extends Controller
     }
 
     public function validationRules(Game $game = null) {
-        $nameRule = [
-            "required",
-            "max:250",
-            "regex:/[A-Za-z0-9]/",
-            Rule::unique("games", "name")->ignore(optional($game)->uuid, 'uuid'),
-        ];
+    $nameRule = [
+        "required",
+        "max:250",
+        "regex:/^(?=.*[A-Za-zÀ-ÿ])[\w\sÀ-ÿ\-!@#$%^&*(),.?:]+$/i",
+        Rule::unique("games", "name")->ignore(optional($game)->uuid, 'uuid'),
+    ];
 
-        return [
-            "name" => $nameRule,
-            "description" => "required|max:250|regex:/[A-Za-z0-9]/",
-            "release_date" => "required|date|after:1900-01-01",
-            "developer" => "required|max:50|regex:/[A-Za-z0-9]/",
-            "publisher" => "required|max:50|regex:/[A-Za-z0-9]/",
-            "game_picture" => "required|file|mimes:jpg,png,jpeg|max:10240"
-        ];
-    }
+    return [
+        "name" => $nameRule,
+        "description" => "required|max:250|regex:/^[\w\sÀ-ÿ\-!@#$%^&*(),.?:]+$/i",
+        "release_date" => "required|date|after:1900-01-01",
+        "developer" => "required|max:50|regex:/^[\w\sÀ-ÿ\-]+$/i",
+        "publisher" => "required|max:50|regex:/^[\w\sÀ-ÿ\-]+$/i",
+        "game_picture" => "required|file|mimes:jpg,png,jpeg|max:10240"
+    ];
+}
 
     public function index()
     {
