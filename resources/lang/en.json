@@ -22,6 +22,10 @@
     "Publisher is required": "Distribuidora é obrigatória",
     "Publisher has max 50 characters": "Distribuidora requer no máximo 50 caracteres",
     "Publisher has invalid characters": "Distribuidora tem caracteres inválidos (não acompanhados por letras ou números)",
+    "Game image is required": "Uma imagem é obrigatória",
+    "Invalid file": "Arquivo inválido",
+    "Image must be jpg, png or jpeg": "A imagem deve ser do tipo jpg, png ou jpeg",
+    "Image too large (max 10MB)": "A imagem é muito grande. O máximo permitido é 10 megabytes.",
 
     "Game Successfully Created": "Jogo registrado com sucesso!",
     "Game Successfully Deleted": "Jogo removido com sucesso!",

@@ -31,7 +31,7 @@
                 <div class="flex flex-col">
                     <input type="file" id="game_picture" name="game_picture" accept="image/*" required
                            class="block w-full text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700 transition">
-                    <p class="mt-2 text-sm text-gray-400">Formatos aceitos: JPG, PNG, GIF (Máx: 5MB)</p>
+                    <p class="mt-2 text-sm text-gray-400">Formatos aceitos: JPG, PNG, GIF (Máx: 10MB)</p>
                 </div>
             </div>
 
