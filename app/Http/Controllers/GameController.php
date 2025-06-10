@@ -9,6 +9,9 @@ use Illuminate\Support\Str;
 
 class GameController extends Controller
 {
+    /**
+     * Mensagens de Validação de Input
+     */
     public function validationMessages() {
         return [
             "name.required" => __('Name is required'),
@@ -39,6 +42,9 @@ class GameController extends Controller
         ];
     }
 
+    /**
+     * Regras de Validação de Input
+     */
     public function validationRules(Game $game = null) {
         $nameRule = [
             "required",
@@ -57,17 +63,29 @@ class GameController extends Controller
         ];
     }
 
+    /**
+     * INDEX
+     * Retorno para a página inicial de Dashboard com os dados dos Jogos
+     */
     public function index()
     {
         $games = Game::all();
         return view('games.index', compact('games'));
     }
 
+    /**
+     * CREATE
+     * Retorno para a página de Registro de Jogo
+     */
     public function create()
     {
         return view('games.create');
     }
 
+    /**
+     * STORE
+     * Tratamento dos Dados de Jogos Registrados
+     */
     public function store(Request $request)
     {
         $request->validate($this->validationRules(), $this->validationMessages());
@@ -90,18 +108,31 @@ class GameController extends Controller
         return redirect()->route('games.index')->with('status', __("Game Successfully Created"));
     }
 
+    /**
+     * SHOW
+     * Retorno para a página de Informações de um Jogo
+     */
     public function show(Game $game)
     {
         return view("games.game", compact('game'));
     }
 
+    /**
+     * EDIT
+     * Retorno para a página de Edição das Informações de um Jogo
+     */
     public function edit(Game $game)
     {
         return view('games.edit', compact("game"));
     }
 
+    /**
+     * STORE
+     * Tratamento dos Dados de Jogos Editados
+     */
     public function update(Request $request, Game $game)
     {
+        // Regras de Validação
         $rules = $this->validationRules($game);
         $rules['game_picture'] = 'nullable|file|mimes:jpg,png,jpeg|max:10240';
         
@@ -123,9 +154,13 @@ class GameController extends Controller
         return redirect()->route("games.index")->with("status", __("The update has been sent successfully"));
     }
 
+    /**
+     * DESTROY
+     * Tratamento da Remoção de Jogos Registrados
+     */
     public function destroy(Game $game)
     {
-        // Remove a imagem associada
+        // Remove a imagem associada localmente
         $this->deleteImage($game->game_picture);
         
         $game->delete();
@@ -134,7 +169,7 @@ class GameController extends Controller
     }
 
     /**
-     * Handle image upload
+     * Processar Upload de Imagem e retornar Path
      */
     private function handleImageUpload($imageFile)
     {
@@ -153,7 +188,7 @@ class GameController extends Controller
     }
 
     /**
-     * Delete image file
+     * Processar Delete da Imagem
      */
     private function deleteImage($imagePath)
     {

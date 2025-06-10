@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+
+    /**
+     * Execução da Migration
+     * Criação da Tabela Jogo/Gênero para um Jogo que tenha mais de um gênero
+     */
     public function up(): void
     {
         Schema::create('game_genre', function (Blueprint $table) {
@@ -25,6 +30,9 @@ return new class extends Migration
         });
     }
 
+    /**
+     * Rollback da Migration
+     */
     public function down(): void
     {
         Schema::dropIfExists('game_genre');

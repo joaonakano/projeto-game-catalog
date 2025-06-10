@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
+    /**
+     * Execução do Seeder das tabelas de Jogos, Gêneros e Jogo/Gênero
+     */
     public function run(): void
     {
         DB::table('genres')->insert([

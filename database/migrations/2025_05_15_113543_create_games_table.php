@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Execução da Migration
+     * Criação da Tabela Jogos
      */
     public function up(): void
     {
@@ -19,16 +20,12 @@ return new class extends Migration
             $table->string('developer');
             $table->string('publisher');
             $table->string('game_picture')->nullable();
-            // Talvez depois...
-            // $table->integer('genre_id')->unsigned();
-            // $table->index('genre_id');
-            // $table->foreign('genre_id')->references(columns: 'id')->on('genres');
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Rollback da Migration
      */
     public function down(): void
     {
