@@ -2,30 +2,67 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_registration_screen_can_be_rendered(): void
+    public function test_tela_de_cadastro_pode_ser_carregada(): void
     {
-        $response = $this->get('/register');
-
-        $response->assertStatus(200);
+        $resposta = $this->get('/register');
+        $resposta->assertStatus(200);
     }
 
-    public function test_new_users_can_register(): void
+    public function test_novo_usuario_pode_se_cadastrar_sem_imagem(): void
     {
-        $response = $this->post('/register', [
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
+        $resposta = $this->post('/register', [
+            'name' => 'Usuário de Teste',
+            'email' => 'teste@exemplo.com',
+            'password' => 'senha123',
+            'password_confirmation' => 'senha123',
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('dashboard', absolute: false));
+        $resposta->assertRedirect(route('games.index'));
+    }
+
+    public function test_usuario_pode_se_cadastrar_com_imagem(): void
+    {
+        // Limpa a pasta public/pictures para garantir ambiente limpo
+        File::deleteDirectory(public_path('pictures'));
+
+        // Cria uma imagem fake para simular o upload
+        $imagemFake = UploadedFile::fake()->image('foto.jpg');
+
+        // Envia o formulário de cadastro incluindo a imagem
+        $resposta = $this->post('/register', [
+            'name' => 'Usuário com Imagem',
+            'email' => 'imagem@exemplo.com',
+            'password' => 'senha123',
+            'password_confirmation' => 'senha123',
+            'picture' => $imagemFake,
+        ]);
+
+        // Verifica se foi redirecionado corretamente
+        $resposta->assertRedirect(route('games.index'));
+
+        // Verifica se o usuário foi criado no banco de dados
+        $this->assertDatabaseHas('users', [
+            'email' => 'imagem@exemplo.com',
+        ]);
+
+        // Busca o usuário criado
+        $usuario = User::where('email', 'imagem@exemplo.com')->first();
+
+        // Verifica se o campo picture foi preenchido
+        $this->assertNotEmpty($usuario->picture);
+
+        // Verifica se o arquivo da imagem foi salvo na pasta public/pictures
+        $this->assertFileExists(public_path($usuario->picture));
     }
 }
