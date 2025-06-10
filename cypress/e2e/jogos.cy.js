@@ -56,6 +56,8 @@ describe("Cadastro de Jogo", () => {
         cy.get("[name=publisher]").type(GAME_INFO.publisher);
 
         cy.get('button').contains("Cadastrar").click();
+
+        cy.contains("Jogo registrado com sucesso!").should("exist");;
         cy.screenshot('Registro-Somente-Numeros');
     });
 
@@ -143,7 +145,7 @@ describe("Edição de Jogo", () => {
     beforeEach(() => {
         cy.login(REAL_USER_INFO)
         cy.visit(`${SERVER_URL}/games`);
-        cy.contains("Editar").click();
+        cy.get("[title=Editar]").first().click();
     });
 
     it("Tentando Editar um Jogo sem Modificar Informações", () => {
@@ -151,12 +153,12 @@ describe("Edição de Jogo", () => {
     })
 
     it("Editando as Informações para um Jogo que já Existe no Banco de Dados", () => {
-        cy.get("#game_picture").selectFile(GAME_INFO.logo);
-        cy.get("[name=name]").clear().type(GAME_INFO.name);
-        cy.get("[name=description]").clear().type(GAME_INFO.description);
-        cy.get("[name=release_date]").clear().type(GAME_INFO.release_date);
-        cy.get("[name=developer]").clear().type(GAME_INFO.developer);
-        cy.get("[name=publisher]").clear().type(GAME_INFO.publisher);
+        cy.get("#game_picture").selectFile(GAME_2_INFO.logo);
+        cy.get("[name=name]").clear().type(GAME_2_INFO.name);
+        cy.get("[name=description]").clear().type(GAME_2_INFO.description);
+        cy.get("[name=release_date]").clear().type(GAME_2_INFO.release_date);
+        cy.get("[name=developer]").clear().type(GAME_2_INFO.developer);
+        cy.get("[name=publisher]").clear().type(GAME_2_INFO.publisher);
 
         cy.contains("Atualizar Jogo").click();
 
@@ -185,5 +187,6 @@ describe("Remoção de Jogo", () => {
     it("Remoção de um Jogo Existente", () => {
         cy.get("#delete-button").submit();
         cy.contains("Jogo removido com sucesso!").should("exist");
+        cy.screenshot("Delete-Jogo");
     });
 });

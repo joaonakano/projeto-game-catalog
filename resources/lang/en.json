@@ -30,6 +30,28 @@
     "Game Successfully Created": "Jogo registrado com sucesso!",
     "Game Successfully Deleted": "Jogo removido com sucesso!",
     "The update has been sent successfully": "Registro atualizado com sucesso!",
+    
+    "Username is required": "Nome de usuário é obrigatório",
+    "Username is not a valid text": "Nome de usuário não é um texto válido",
+    "Username has max 255 characters": "Nome de usuário requer no máximo 255 caracteres",
+
+    "Email is required": "Email é obrigatório",
+    "Email is not a valid text": "Email não é um texto válido",
+    "Email must be lowercase": "Email deve estar em letras minúsculas",
+    "Email is not valid": "Email inválido",
+    "Email has max 255 characters": "Email requer no máximo 255 caracteres",
+    "Email already registered": "Email já registrado",
+
+    "Credentials not found": "Credenciais inválidas",
+    "Password is required": "Senha é obrigatória",
+    "Passwords do not match": "As senhas não coincidem",
+    "auth.password": "Erro LoL, senhas não são de conta nenhuma",
+
+    "Picture is not a valid file": "Imagem não é um arquivo válido",
+    "Picture must be jpg, png or jpeg": "A imagem deve ser do tipo jpg, png ou jpeg",
+    "Image has max 10mb": "A imagem é muito grande. O máximo permitido é 10 megabytes",
+
+    "Token not Found": "Token não encontrado",
 
     "Game": "Jogo",
     "Album": "Vitrine",

@@ -49,7 +49,7 @@ class GameController extends Controller
     $nameRule = [
         "required",
         "max:250",
-        "regex:/^(?=.*[A-Za-zÀ-ÿ])[\w\sÀ-ÿ\-!@#$%^&*(),.?:]+$/i",
+        "regex:/^(?=.*[A-Za-zÀ-ÿ0-9])[\w\sÀ-ÿ\-!@#$%^&*(),.?:]+$/i",
         Rule::unique("games", "name")->ignore(optional($game)->uuid, 'uuid'),
     ];
 
